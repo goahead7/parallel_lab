@@ -103,21 +103,6 @@ ElementType reduce_range(ElementType a, ElementType b, std::size_t n, UnaryFn ge
         reduction_partial_results[t].value = accum;
     };
 
-
-//    auto thread_proc_2 = [=](unsigned t)
-//    {
-//        constexpr std::size_t k = 2;
-//        std::size_t s = 1;
-//        while((t % (s * k)) && (t + s < T))
-//        {
-//            reduction_partial_results[t].value = f(reduction_partial_results[t].value,
-//                                                   reduction_partial_results[t + s].value);
-//            s *= k;
-//            // ------------barrier------------ //
-//        }
-//    };
-
-
     auto thread_proc_2_ = [=](unsigned t, std::size_t s)
     {
         if(((t % (s * k)) == 0) && (t + s < T))
@@ -154,16 +139,6 @@ ElementType reduce_range(ElementType a, ElementType b, std::size_t n, UnaryFn ge
         }
     }
 
-
-//    for(unsigned t = 1; t < T; t++)
-//    {
-//        threads[t-1] = std::thread(thread_proc_2, t);
-//    }
-//    thread_proc_2(0);
-//    for(auto& thread : threads)
-//    {
-//        thread.join();
-//    }
 
     return reduction_partial_results[0].value;
 }
