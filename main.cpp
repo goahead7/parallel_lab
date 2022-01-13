@@ -40,14 +40,17 @@ int main() {
 
     set_num_threads(1);
 
-    printf("Integrate_mutex_cpp\n");
-    ShowExperimentResult(integrate_cpp_mtx);
-
     printf("Integrate_partial_sum\n");
     ShowExperimentResult(integrate_partial_sum);
+    
+    printf("Integrate_false_sharing_omp\n");
+    ShowExperimentResult(integrate_false_sharing);
 
     printf("Integrate_reduction_cpp\n");
     ShowExperimentResult(integrate_cpp_reduction);
+    
+    printf("Integrate_reduction_omp\n");
+    ShowExperimentResult(integrate_reduction);
 
     printf("Integrate_reduction_range_cpp\n");
     ShowExperimentResult(integrate_range_reduction);
@@ -58,11 +61,9 @@ int main() {
     printf("Integrate_crit_omp\n");
     ShowExperimentResult(integrate_crit);
 
-    printf("Integrate_false_sharing_omp\n");
-    ShowExperimentResult(integrate_false_sharing);
+    printf("Integrate_mutex_cpp\n");
+    ShowExperimentResult(integrate_cpp_mtx);
 
-    printf("Integrate_reduction_omp\n");
-    ShowExperimentResult(integrate_reduction);
 
     return 0;
 }
