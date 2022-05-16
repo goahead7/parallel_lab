@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.17)
-project(parallel_final LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.15)
+project(untitled21)
 
-find_package(OpenMP REQUIRED)
+set(CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_CXX_STANDARD 20)
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mavx2")
 
-add_executable(parallel_final main.cpp src/threads_num.cpp src/functions.cpp src/integrate_cpp.cpp src/integrate_omp.cpp src/reduction.cpp src/types.h)
-target_link_libraries(parallel_final PRIVATE OpenMP::OpenMP_CXX)
+add_executable(untitled21 main_1.cpp)
